@@ -1,0 +1,25 @@
+import csv
+total_team = []
+winner = []
+result = {}
+# Read csv file
+reader = csv.reader(open('matches.csv', 'r'))
+for row in reader:
+    total_team.append(row[4])
+    total_team.append(row[5])
+    winner.append(row[10])
+# make value unique in list teams
+teams = list( dict.fromkeys(total_team) )
+# remove unwanted name from list teams
+teams.remove('team1')
+teams.remove('team2')
+
+
+
+
+
+for team in teams:
+    result[team] = {"Total_played": total_team.count(team), "won": winner.count(team),
+               "lost": total_team.count(team) - winner.count(team),}
+# showing result
+print(result)
